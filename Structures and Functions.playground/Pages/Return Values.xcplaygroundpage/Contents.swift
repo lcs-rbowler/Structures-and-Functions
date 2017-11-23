@@ -20,10 +20,22 @@ import Foundation
  
  Type the code that you see above. Then run the playground to try it out.
  */
-// Define the function here
+// Calculates distance between two points
+//
+// - Parameters:
+//  - fromX: The "X" value of the first point
+//  - fromY: The "Y" value of the first point
+//  - toX: The "X" value of the second point
+//  - toY: The "Y" value of the second point
+// - Returns the distance between the two points
 
+// Define the function here
+func distance(fromX: Double, fromY: Double, toX: Double, toY: Double) -> Double {
+    return sqrt(pow(fromX - toX, 2) + pow(fromY - toY, 2))
+}
 // Now invoke the function to calculate the distance between (0, 0) and (3, 4)
 // NOTE: Before you run the code, make a prediction about the distance between these two points.
+distance(fromX: 0, fromY: 0, toX: 3, toY: 4)
 
 /*:
  ### Documenting functions
