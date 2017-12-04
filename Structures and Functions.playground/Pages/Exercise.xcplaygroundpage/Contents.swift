@@ -60,18 +60,25 @@ func getVerticalIntercept(from p: Point, onLineWith m: Slope) -> Double {
     return p.y - mAsADecimal * p.x
 }
 
-getVerticalIntercept(from: cabinSite, onLineWith: perpendicularSlope)
+let perpendicularLineVerticalIntercept = getVerticalIntercept(from: cabinSite, onLineWith: perpendicularSlope)
+
+let newRoad = Line(slope: perpendicularSlope, verticalIntercept: perpendicularLineVerticalIntercept)
 
 
+func getPointOfIntersection(between first: Line, and second: Line) -> Point {
+    let verticalInterceptSum = first.verticalIntercept - second.verticalIntercept
+    let slopeDifference = second.slope.rise / second.slope.run
+    return Point()
+}
 
-
+getPointOfIntersection(between: existingRoad, and: newRoad)
 
 /// Finds the distance (from Pythagorean's Theorem)
 ///
 /// - Parameter from: the first point
 /// - Returns: the distance
 
-//func distance(from: Point, to Point) -> Double {
-//    return sqrt( pow(from.x - to.y) + pow(to.y - from.y) )
-//}
+func distance(from: Point, to Point) -> Double {
+    return sqrt( pow(from.x - to.y) + pow(to.y - from.y) )
+}
 
