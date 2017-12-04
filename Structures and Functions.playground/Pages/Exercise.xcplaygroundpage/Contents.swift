@@ -23,33 +23,55 @@ import Foundation
 // Begin here... once you teach the computer to do this, you will never need to do it by hand again! :)
 
 // Create Line structure
-struct Line {
+struct Point {
     var x : Double = 0.0
     var y : Double = 0.0
 }
 
-// Create Point structure
-struct Point {
-    (10.0, 5.0) to (20.0, 10.0)
+// Create Slope structure
+struct Slope {
+    var rise : Double = 1.0
+    var run : Double = 1.0
 }
 
+// Create Line structure
+struct Line {
+    var slope = Slope()
+    var verticalIntercept : Double = 0.0
+}
 
 // Create the points here
-var pointStart = Point()
-var pointEnd = Point(x: 3.0, y: 4.0)
+var cabinSite = Point(x: 6, y: 1.5)
+cabinSite.x = 7
+
+// Represent existing road in the code
+var slopeOfExistingRoad = Slope(rise: -1, run: 2)
+var existingRoad = Line(slope: slopeOfExistingRoad, verticalIntercept: 9.5)
 
 
-// Query the points here to find the x and y values separately
-pointStart.x
-pointStart.y
-pointEnd.x
-pointEnd.y
-
-
-// Define the distance function of the point here
-func distanceBetweenLineAndPoint(from: Point, to: Point) -> Double {
-    return sqrt(pow(from.x - to.x, 2) + pow(from.y - to.y, 2))
+func getSlopeOfPerpendicularLine(from givenLine: Line) -> Slope {
+    return Slope(rise: givenLine.slope.run, run: givenLine.slope.rise * -1)
 }
 
-// Invoke the functions here
-distanceBetweenLineAndPoint(from: pointStart, to: pointEnd)
+let perpendicularSlope = getSlopeOfPerpendicularLine(from: existingRoad)
+
+func getVerticalIntercept(from p: Point, onLineWith m: Slope) -> Double {
+    let mAsADecimal = m.rise/m.run
+    return p.y - mAsADecimal * p.x
+}
+
+getVerticalIntercept(from: cabinSite, onLineWith: perpendicularSlope)
+
+
+
+
+
+/// Finds the distance (from Pythagorean's Theorem)
+///
+/// - Parameter from: the first point
+/// - Returns: the distance
+
+//func distance(from: Point, to Point) -> Double {
+//    return sqrt( pow(from.x - to.y) + pow(to.y - from.y) )
+//}
+
